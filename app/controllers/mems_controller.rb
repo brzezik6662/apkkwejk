@@ -1,12 +1,22 @@
 class MemsController < ApplicationController
   before_action :set_mem, only: [:show, :edit, :update, :destroy]
-
-  # GET /mems
-  # GET /mems.json
+  before_action :authenticate_user!, only: [:create,:my]
+        
   def index
-    @mems = Mem.all
+    @mems = Mem.active
   end
-
+  def my
+    @mems = current_user.mems
+    render :index
+  end
+  
+  def inactive
+    @mems = Mem.inactive
+    render :index
+  end
+  def create
+    @mem = current_user.mems.new(mem_params)
+  end
   # GET /mems/1
   # GET /mems/1.json
   def show
