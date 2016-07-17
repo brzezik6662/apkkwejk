@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-
+gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'rails_admin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
